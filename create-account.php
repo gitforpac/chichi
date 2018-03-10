@@ -1,3 +1,6 @@
+<?php
+require 'functions/sessions.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,32 +19,41 @@
 		<span style="font-size: 24px;position: relative;left: -5px;top: -15px;">Join Us!</span> 
 	</div>
 	<br>
-	<form>
-
+	<form method="POST" action="register.php">
+	<?php 
+		if(exists('register_error')) {
+	?>
+	<small id="emailHelp" class="form-text error">
+		<?php
+			echo flash('register_error');
+		?>
+	</small>
+	<?php
+		}
+	?>
 	<div class="form-row" style="margin-bottom: 10px;">
 	    <div class="col">
 	      <label for="exampleInputEmail1">First Name</label>
-	      <input type="text" name="first_name" class="form-control" placeholder="Jane">
+	      <input type="text" name="first_name" class="form-control" placeholder="Jane" required="">
 	    </div>
 	    <div class="col">
 	    	<label for="exampleInputEmail1">Last Name</label>
-	      <input type="text" name="last_name" class="form-control" placeholder="Doe">
+	      <input type="text" name="last_name" class="form-control" placeholder="Doe" required="">
 	    </div>
 	  </div>
     <div class="form-group">
     	<label for="exampleInputEmail1">Email</label>
-    	<input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="janedoe@mail.com">
-    	<small id="emailHelp" class="form-text error">We'll never share your email with anyone else.</small>
+    	<input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="janedoe@mail.com" required>
     </div>
 
     <div class="form-group">
 	    <label for="exampleInputEmail1">Where do you live?</label>
-	    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ouano St. Looc, Mandaue City">
+	    <input type="text" name="address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ouano St. Looc, Mandaue City" required>
     </div>
 
     <div class="form-group">
 	    <label for="exampleInputPassword1">Password</label>
-	    <input type="password" class="form-control" id="exampleInputPassword1">
+	    <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
     </div>
 
 	  <button type="submit" class="btn btn-block btn-login">Register</button>

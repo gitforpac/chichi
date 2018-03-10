@@ -1,28 +1,50 @@
 <?php
 
-$username = $_POST['username'];
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
-$email = $_POST['email'];
-$contact = $_POST['contact'];
-$password = $_POST['password'];
-$salt = Hash::salt(32);
-$clientdata = array (
-					'username' => $username,
-					'firstname' => $firstname,
-					'lastname' => $lastname,
-					'email' => $email,
-					'contact' => $contact,
-					'password' => Hash::make($password,$salt),
-					'salt' => $salt
-				);
+session_start();
 
+require 'functions/crud.php';
+require 'functions/functions.php';
+require 'functions/sessions.php';
 
-$register = $client->register($clientdata);
-if ($register == true) {
-	echo 'Creating Account Successful, Now You can Log in!';
+if(empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['address']) || empty($_POST['password'])) {
+
+	$msg = '*All fields are required';
+
+	flash("register_error", $msg);
+	redirect('create-account.php');
+
 } else {
-	echo 'Error Creating Account, Please Try Again';
+
+	$name = $_POST['first_name'] . ' ' . $_POST['last_name'];
+	$email = $_POST['email'];
+	$address = $_POST['address'];
+	$password = $_POST['password'];
+
+	$data = [
+				'name' => $name,
+				'email' => $email,
+				'address' => $address,
+				'password' => hashed_password($password),
+			];
+
+	$registered = insert('users',$data);
+
+	if($registered) {
+
+		$msg = 'You can now login to your account';
+
+		flash("registered", $msg);
+		redirect('login.php');
+
+	} else {
+
+		$msg = 'Error Creating Account';
+
+		flash("register_error", $msg);
+		redirect('create-account.php');
+	}
+
 }
+
 
 ?>

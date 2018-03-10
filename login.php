@@ -1,3 +1,6 @@
+<?php
+require 'functions/sessions.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +17,18 @@
 		<i class="fas fa-camera-retro"></i>
 		<br>
 		<span style="font-size: 24px;position: relative;left: -5px;top: -15px;">Login</span> 
+		<p style="font-size: 20px;position: relative;left: -5px;top: -15px;color:#83b9bf;margin-bottom: -10px;">
+			<?php
+				if(exists('registered')) {
+					echo flash('registered');
+				}
+			?>
+		</p>
 	</div>
 	<form>
 	  <div class="form-group">
 	    <label for="exampleInputEmail1">Email</label>
 	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="janedoe@mail.com">
-	    <small id="emailHelp" class="form-text error">We'll never share your email with anyone else.</small>
 	  </div>
 	  <div class="form-group">
 	    <label for="exampleInputPassword1">Password</label>

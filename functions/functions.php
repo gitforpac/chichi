@@ -1,6 +1,12 @@
 <?php
 
-function hash($password)
+function redirect($url)
+{
+	header("Location: " . $url);
+	die();
+}
+
+function hashed_password($password)
 {
 	$options = [
 	    'cost' => 12,
