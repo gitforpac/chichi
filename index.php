@@ -1,14 +1,11 @@
 <?php
 
-require 'dbconnect.php';
+require 'functions/crud.php';
 
-$name = $_GET['name'];
 
-$sql = "INSERT INTO mdt(name) VALUES('$name')";
+$res = getall('*','mdt');
 
-$query = mysql_query($sql_query);
-
-var_dump($query);
+var_dump($res);
 
 
 ?>

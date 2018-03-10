@@ -198,8 +198,34 @@ a.nav-link {
 	border-radius: 3px;
 }
 
+.btn-login {
+	margin-top: 10px;
+	color: #fff;
+	background-color: #83b9bf;
+}
+
+.error {
+	display: none;
+}
+
 
 .grid-item { width: 380px; margin-right: 5px; margin-bottom: 10px;}
+
+.cam-logo {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.form-control {
+	border: 1px solid #505359 !important;
+}
+
+.login-con {
+	color: #111111 !important;
+	max-width: 600px !important;
+	margin: 20px auto;
+}
+
 
 
 
