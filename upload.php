@@ -14,7 +14,7 @@ if(in_array($fileExt, $allowed)) {
 
 	$storedFileName = $ext[0]. '_'.time().'.'.$fileExt;
 
-	$storePath = './public/uploads/' . $storedFileName;
+	$storePath = __DIR__ . '/public/uploads/' . $storedFileName;
 
 	move_uploaded_file($tempFileName, $storePath);
 

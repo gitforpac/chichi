@@ -154,6 +154,8 @@ a.nav-link {
 	left: 10px !important;
 }
 
+
+
 .text-header {
 	margin-left: 55px;
 	margin-bottom: 30px;
@@ -188,6 +190,14 @@ a.nav-link {
 	border-radius: 100%;
 }
 
+.user-avatar-overlay {
+	height: 40px;
+	width: 40px;
+	border-radius: 100%;
+	margin-left: 10px;
+	margin-right: 4px;
+}
+
 .user-name {
 	display: inline-block !important;
 }
@@ -214,7 +224,25 @@ a.nav-link {
 }
 
 
-.grid-item { width: 400px; margin-right: 5px; margin-bottom: 10px;}
+.grid-item { 
+	width: 400px; 
+	margin-right: 5px; 
+	margin-bottom: 10px;
+	background-color: #edeff2;
+}
+
+.overlay {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(47, 49, 53,0.6);
+	z-index: 50;
+	cursor: pointer;
+}
+
 
 .cam-logo {
 	margin: 0 auto;

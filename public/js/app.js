@@ -10,7 +10,7 @@ function sendData() {
     XHR.addEventListener("load", function(event) {
 	    if (XHR.status >= 200 && XHR.status < 400) {
 	    	
-	    	var data =  JSON.parse(event.target.responseText);
+	    	var data =  JSON.parse(XHR.responseText);
 		    // Success!
 		    if(data.success == true) {
                alert('success');

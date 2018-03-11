@@ -4,6 +4,31 @@ require 'dbconnect.php';
 
 /****
 
+ get - GET ALL DATA FROM TABLE SPECIFIED FROM QUERY AND RETURN IN OBJECT FORMAT
+
+***/
+function get($sql)
+{
+	$data = array();
+	global $dbcon;
+
+	if($results = $dbcon->query($sql)) {
+		if($results->num_rows) {
+			while($row=$results->fetch_object()){
+				$data[] = $row;
+			}
+		}
+
+
+	// return data fetched from database
+	return $data;
+
+	}
+	
+}
+
+/****
+
  getall - GET ALL DATA FROM TABLE AND RETURN IN OBJECT FORMAT
 
 ***/

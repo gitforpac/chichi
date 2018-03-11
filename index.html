@@ -76,11 +76,17 @@
 
 <div class="container c-extend">
 	<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 10 }'>
-	  <div class="grid-item"><img class="image-fit" src="public/img/j1.jpg"></div>
-	  <div class="grid-item"><img class="image-fit" src="public/img/2s.jpg"></div>
-	  <div class="grid-item"><img class="image-fit" src="public/img/3s.jpg"></div>
-	  <div class="grid-item"><img class="image-fit" src="public/img/4s.jpg"></div>
-	  <div class="grid-item"><img class="image-fit" src="public/img/5s.jpg"></div>
+    <div class="grid-item">
+      <div class="overlay"></div>
+       <img class="image-fit" src="public/img/j1.jpg">
+    </div>
+	  <div class="grid-item" >
+      <div class="overlay"></div>
+      <img class="image-fit" src="public/img/2s.jpg">
+    </div>
+	  <div class="grid-item" data-author="jon snow" data-userid=""><div class="overlay"></div><img class="image-fit" src="public/img/3s.jpg"></div>
+	  <div class="grid-item"><div class="overlay"></div><img class="image-fit" src="public/img/4s.jpg"></div>
+	  <div class="grid-item"><div class="overlay"></div><img class="image-fit" src="public/img/5s.jpg"></div>
 	  <div class="grid-item"><img class="image-fit" src="public/img/6s.jpg"></div>
 	  <div class="grid-item"><img class="image-fit" src="public/img/2s.jpg"></div>
 	  <div class="grid-item"><img class="image-fit" src="public/img/2s.jpg"></div>
@@ -91,9 +97,24 @@
 
 <!-- javascript -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script type="text/javascript" src="public/js/masonry.pkgd.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+    $('div.grid div.grid-item').on('mouseenter',function(){
+      var author = $(this).data('author');
+      var userid = $(this).data('userid');
+      $(this).children('div.overlay').animate({opacity:1},60);
+      $(this).children('div.overlay').html('<content style="position: absolute;bottom: 10px;color#fff;"><span><img class="user-avatar-overlay" src="public/img/user.png"></span><a style="color:#f9f9f9;position:relative;top:4px;" href="'+ userid + '">' + author + '</a></content>');
+    }).on('mouseleave',function(){
+      $(this).children('div.overlay').animate({opacity:0},100);
+    });
+  });
+</script>
 </body>
 </html>

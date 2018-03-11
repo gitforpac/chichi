@@ -25,14 +25,14 @@ require 'functions/sessions.php';
 			?>
 		</p>
 	</div>
-	<form>
+	<form method="POST" action="authenticate.php">
 	  <div class="form-group">
 	    <label for="exampleInputEmail1">Email</label>
-	    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="janedoe@mail.com">
+	    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="janedoe@mail.com" required>
 	  </div>
 	  <div class="form-group">
 	    <label for="exampleInputPassword1">Password</label>
-	    <input type="password" class="form-control" id="exampleInputPassword1">
+	    <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
 	  </div>
 	  <button type="submit" class="btn btn-block btn-login">Login</button>
 	</form>
