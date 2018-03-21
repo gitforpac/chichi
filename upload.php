@@ -1,6 +1,7 @@
 <?php
 
 require 'functions/crud.php';
+require 'functions/sessions.php';
 
 $filename = $_FILES['upload_image']['name'];
 $tempFileName = $_FILES['upload_image']['tmp_name'];
@@ -21,7 +22,7 @@ if(in_array($fileExt, $allowed)) {
 	$data = [
 				'file_name' => $storedFileName,
 				'created_at' => date("Y-m-d H:i:s"),
-				'user_id' => 1 // to be changed
+				'user_id' =>  get_session('uid')
 			];
 
 	$uploaded = insert('uploads',$data);

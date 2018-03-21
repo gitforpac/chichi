@@ -17,13 +17,13 @@ require 'functions/sessions.php';
 		<i class="fas fa-camera-retro"></i>
 		<br>
 		<span style="font-size: 24px;position: relative;left: -5px;top: -15px;">Login</span> 
-		<p style="font-size: 20px;position: relative;left: -5px;top: -15px;color:#83b9bf;margin-bottom: -10px;">
-			<?php
-				if(exists('registered')) {
-					echo flash('registered');
-				}
-			?>
-		</p>
+		<div class="flash-text-login <?php if(exists('class-login')) { echo flash('class-login'); } ?>" >
+	        <?php
+	          if(exists('login')) {
+	            echo flash('login');
+	          }
+	        ?> 
+	   	</div>
 	</div>
 	<form method="POST" action="authenticate.php">
 	  <div class="form-group">

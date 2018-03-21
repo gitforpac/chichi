@@ -11,7 +11,9 @@ $sql = "SELECT * FROM users WHERE email = '$email'";
 $user = $dbcon->query($sql);
 
 if($user->num_rows == 0) {
-	echo 'unauthorized';
+	flash('login','<i class="fas fa-exclamation-circle"></i> Credentials not found');
+	flash('class-login','error');
+	redirect('login.php');
 } else {
 	$row = $user->fetch_object();
 	$auth = check_password($row->password,$password);
@@ -21,8 +23,11 @@ if($user->num_rows == 0) {
 		put('name',$row->name);
 		put('email',$row->email);
 		put('address',$row->address);
+		redirect('index.php');
 	} else {
-		echo "bad password";
+		flash('login','<i class="fas fa-exclamation-circle"></i> Credentials not found');
+		flash('class-login','error');
+		redirect('login.php');
 	}
 }
 

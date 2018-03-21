@@ -11,9 +11,13 @@ function sendData() {
 	    if (XHR.status >= 200 && XHR.status < 400) {
 	    	
 	    	var data =  JSON.parse(XHR.responseText);
+
+            console.log(data);
+
 		    // Success!
 		    if(data.success == true) {
-               alert('success');
+               alert('success uploading image');
+               window.location.reload();
             } else {
             // We reached our target server, but it returned an error
             alert('error')
