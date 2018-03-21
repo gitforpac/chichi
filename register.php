@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 require 'functions/crud.php';
 require 'functions/functions.php';
